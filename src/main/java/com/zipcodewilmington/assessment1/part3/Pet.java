@@ -10,10 +10,11 @@ public abstract class Pet implements Animal {
      */
     private String name = "";
     private Integer age =0;
-    private PetOwner owner;
+    private PetOwner owner = null;
+
+
     public Pet() {
-//        this.name = "";
-//        this.age =0;
+
     }
 
     /**
@@ -61,7 +62,11 @@ public abstract class Pet implements Animal {
      */
     public void setOwner(PetOwner newPetOwner) {
        // Pet pet = new Pet(this.name, this.age);
-       newPetOwner.addPet(this);
+      // this.owner = newPetOwner;
+        if(this.owner != newPetOwner) {
+            this.owner = newPetOwner;
+            newPetOwner.addPet(this);
+        }
     }
 
     /**
@@ -69,6 +74,10 @@ public abstract class Pet implements Animal {
      */
     public PetOwner getOwner() {
 //return null;
-        return this.owner;
+        if(this.owner != null){
+            return this.owner;
+        }
+
+        return null;
     }
 }

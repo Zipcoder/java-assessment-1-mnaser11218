@@ -16,6 +16,8 @@ public class PetOwner {
    //private Pet[] pets = new Pet[];
     public Pet[] pets;
 
+//    public PetOwner() {
+//    }
 
     public PetOwner(String name, Pet... pets) {
         this.name =name;
@@ -26,15 +28,7 @@ public class PetOwner {
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
-//        List<Pet> petList = Arrays.asList(pets);
-//
-////        ArrayList<Pet> arrayList = new ArrayList<>();
-////        for(Pet object : this.pets){
-////                arrayList.add(object);
-////        }
-//        petList.add(pet);
-////        return null;
-//     this.pets = (Pet[]) petList.toArray();
+
         Pet newarr[];
         int count;
         if(this.pets == null){
@@ -46,11 +40,6 @@ public class PetOwner {
         }
 
 
-        // insert the elements from
-        // the old array into the new array
-        // insert all elements till n
-        // then insert x at n+1
-
         for (int i = 0; i < count; i++){
             newarr[i] = pets[i];
         }
@@ -59,20 +48,17 @@ public class PetOwner {
 
         this.pets = newarr;
 
-        //return newarr;
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-        //     this.pets = (Pet[]) petList.toArray();
         Pet newarr[] = null;
         int count;
         if(this.pets.length == 1){
            this.pets[0] = null;
-//            newarr = new Pet[0];
-//            count =0;
+
         }else{
             newarr = new Pet[pets.length -1];
             count = pets.length;
@@ -82,8 +68,6 @@ public class PetOwner {
                 }
 
             }
-            //newarr[count] = pet;
-
 
             this.pets = newarr;
 
@@ -97,7 +81,12 @@ public class PetOwner {
      */
     public Boolean isOwnerOf(Pet pet) {
 
-        return pet.getName().equals(this.name);
+        for (int i = 0; i < this.pets.length; i++){
+            if(pets[i].equals(pet)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

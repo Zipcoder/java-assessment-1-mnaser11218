@@ -11,6 +11,18 @@ public class Dog extends Pet {
      */
     private String name="";
     private Integer age =0;
+    //private PetOwner owner;
+
+//    @Override
+//    public PetOwner getOwner() {
+//        return this.owner;
+//    }
+//
+//    @Override
+//    public void setOwner(PetOwner owner) {
+//        this.owner = owner;
+//    }
+
     public Dog(String name, Integer age) {
 //super(name, age);
         this.name =name;
