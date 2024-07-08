@@ -1,5 +1,9 @@
 package com.zipcodewilmington.assessment1.part3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -8,19 +12,36 @@ public class PetOwner {
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
+    private String name;
+   private Pet[] pets;
+
+
+
     public PetOwner(String name, Pet... pets) {
+        this.name =name;
+        this.pets = pets;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+        List<Pet> petList = Arrays.asList(pets);
+
+//        ArrayList<Pet> arrayList = new ArrayList<>();
+//        for(Pet object : this.pets){
+//                arrayList.add(object);
+//        }
+        petList.add(pet);
+//        return null;
+     this.pets = (Pet[]) petList.toArray();
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
+       // pets.remove(pet);
 
     }
 
@@ -29,13 +50,15 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+
+        return pet.getName().equals(this.name);
     }
 
     /**
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
     public Integer getYoungetPetAge() {
+
         return null;
     }
 
@@ -68,13 +91,15 @@ public class PetOwner {
      * @return the name property of the Pet
      */
     public String getName() {
-        return null;
+
+        return this.name;
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return null;
+
+        return this.pets;
     }
 }
