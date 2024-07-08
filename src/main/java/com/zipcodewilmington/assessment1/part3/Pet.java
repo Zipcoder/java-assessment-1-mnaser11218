@@ -65,7 +65,7 @@ public abstract class Pet implements Animal {
       // this.owner = newPetOwner;
         if(this.owner != newPetOwner) {
             this.owner = newPetOwner;
-            newPetOwner.addPet(this);
+           // newPetOwner.addPet(this);
         }
     }
 
@@ -74,10 +74,6 @@ public abstract class Pet implements Animal {
      */
     public PetOwner getOwner() {
 //return null;
-        if(this.owner != null){
-            return this.owner;
-        }
-
-        return null;
+       return this.owner;
     }
 }
