@@ -13,8 +13,8 @@ public class PetOwner {
      * @param pets array of Pet object
      */
     private String name;
-   private Pet[] pets;
-
+   //private Pet[] pets = new Pet[];
+    public Pet[] pets;
 
 
     public PetOwner(String name, Pet... pets) {
@@ -26,22 +26,68 @@ public class PetOwner {
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
-        List<Pet> petList = Arrays.asList(pets);
+//        List<Pet> petList = Arrays.asList(pets);
+//
+////        ArrayList<Pet> arrayList = new ArrayList<>();
+////        for(Pet object : this.pets){
+////                arrayList.add(object);
+////        }
+//        petList.add(pet);
+////        return null;
+//     this.pets = (Pet[]) petList.toArray();
+        Pet newarr[];
+        int count;
+        if(this.pets == null){
+            newarr = new Pet[1];
+            count =0;
+        }else{
+            newarr = new Pet[pets.length + 1];
+            count = pets.length;
+        }
 
-//        ArrayList<Pet> arrayList = new ArrayList<>();
-//        for(Pet object : this.pets){
-//                arrayList.add(object);
-//        }
-        petList.add(pet);
-//        return null;
-     this.pets = (Pet[]) petList.toArray();
+
+        // insert the elements from
+        // the old array into the new array
+        // insert all elements till n
+        // then insert x at n+1
+
+        for (int i = 0; i < count; i++){
+            newarr[i] = pets[i];
+        }
+        newarr[count] = pet;
+
+
+        this.pets = newarr;
+
+        //return newarr;
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-       // pets.remove(pet);
+        //     this.pets = (Pet[]) petList.toArray();
+        Pet newarr[] = null;
+        int count;
+        if(this.pets.length == 1){
+           this.pets[0] = null;
+//            newarr = new Pet[0];
+//            count =0;
+        }else{
+            newarr = new Pet[pets.length -1];
+            count = pets.length;
+            for (int i = 0; i < count; i++){
+                if(!pets[i].equals(pet)){
+                    newarr[i] = pets[i];
+                }
+
+            }
+            //newarr[count] = pet;
+
+
+            this.pets = newarr;
+
+        }
 
     }
 
@@ -59,7 +105,13 @@ public class PetOwner {
      */
     public Integer getYoungetPetAge() {
 
-        return null;
+        Integer youngestAge = 100;
+        for(int i =0; i< this.pets.length; i++){
+            if(pets[i].getAge() <= youngestAge){
+                youngestAge = pets[i].getAge();
+            }
+        }
+        return youngestAge;
     }
 
 
@@ -69,7 +121,13 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
-        return null;
+        Integer youngestAge = 0;
+        for(int i =0; i< this.pets.length; i++){
+            if(pets[i].getAge() >= youngestAge){
+                youngestAge = pets[i].getAge();
+            }
+        }
+        return youngestAge;
     }
 
 
@@ -77,14 +135,23 @@ public class PetOwner {
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
-        return null;
+        Float averagePetAge = 0.0F;
+
+        for(int i =0; i< this.pets.length; i++){
+                averagePetAge += pets[i].getAge();
+
+        }
+        return averagePetAge / this.pets.length;
+
+
+
     }
 
     /**
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
-        return null;
+        return this.pets.length;
     }
 
     /**

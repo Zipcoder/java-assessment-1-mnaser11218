@@ -2,7 +2,7 @@ package com.zipcodewilmington.assessment1.part5;
 
 public class Palindrome {
 
-    public static Integer countPalindromes(String input){
+    public Integer countPalindromes(String input){
         int size = input.length();// all single characters in string are treated as palindromes.
         int count = size;
         for(int i=0; i<size; i++) {
@@ -18,10 +18,10 @@ public class Palindrome {
     }
 
     // Driver code
-    public static void main(String[] args)
-    {
-        String str = "aaa";
-        System.out.println(
-                countPalindromes(str));
-    }
+//    public static void main(String[] args)
+//    {
+//        String str = "aaa";
+//        System.out.println(
+//                countPalindromes(str));
+//    }
 }
